@@ -1,0 +1,41 @@
+<header class="sticky top-0 z-40 bg-black/70 backdrop-blur-sm transition-all duration-300" id="header">
+    <!-- Borde decorativo superior -->
+    <div class="h-1 bg-gradient-to-r from-[#E94E1B] via-[#D81B60] to-[#4CAF50]"></div>
+    
+    <div class="container mx-auto px-4 flex h-20 items-center justify-between relative">
+      <!-- Logo -->
+      <div class="flex items-center gap-2">
+        <img src="logo.svg" alt="Catris Food" class="w-40 h-auto">
+      </div>
+      
+      <!-- Navegación principal -->
+      <nav class="hidden md:flex gap-8">
+        <a href="#menu" class="text-base font-medium text-white hover:text-[#E94E1B] transition-colors duration-300 relative group">
+          <span class="font-satisfy">Menú</span>
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#E94E1B] group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#eventos" class="text-base font-medium text-white hover:text-[#D81B60] transition-colors duration-300 relative group">
+          <span class="font-satisfy">Eventos</span>
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#D81B60] group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#ubicacion" class="text-base font-medium text-white hover:text-[#4CAF50] transition-colors duration-300 relative group">
+          <span class="font-satisfy">Ubicación</span>
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#4CAF50] group-hover:w-full transition-all duration-300"></span>
+        </a>
+      </nav>
+      
+      <!-- Botón CTA -->
+      <a href="#" class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-6 py-2.5 rounded-full text-base font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 border border-[#E94E1B]/30 flex items-center gap-2">
+        <span>Ordenar Ahora</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+      
+      <!-- Elementos decorativos sutiles -->
+      <div class="absolute -bottom-0.5 left-0 w-full h-0.5 bg-gradient-to-r from-[#E94E1B]/20 via-[#D81B60]/20 to-[#4CAF50]/20"></div>
+    </div>
+    
+    <!-- Patrón decorativo sutil -->
+    <div class="absolute inset-0 opacity-5 pointer-events-none bg-repeat mix-blend-overlay" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+  </header>

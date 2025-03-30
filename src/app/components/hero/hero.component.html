@@ -1,0 +1,67 @@
+<section class="py-12 bg-cover bg-center flex items-center justify-center min-h-screen relative" style="background-image: url('principal.jpg');">
+    <!-- Overlay para mejorar legibilidad del texto -->
+    <div class="absolute inset-0 bg-black/40"></div>
+    
+    <!-- Elementos decorativos -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-transparent h-32 pointer-events-none"></div>
+    <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent h-32 pointer-events-none"></div>
+    
+    <!-- Patrón decorativo sutil -->
+    <div class="absolute inset-0 opacity-10 pointer-events-none bg-repeat mix-blend-overlay" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+    
+    <div class="container mx-auto px-4 text-center relative z-10">
+      <div class="max-w-3xl mx-auto">
+        <!-- Elemento decorativo superior -->
+        <div class="flex justify-center mb-6">
+          <div class="h-1 w-16 bg-[#E94E1B] rounded-full mx-1"></div>
+          <div class="h-1 w-16 bg-[#D81B60] rounded-full mx-1"></div>
+          <div class="h-1 w-16 bg-[#4CAF50] rounded-full mx-1"></div>
+        </div>
+        
+        <!-- Contenido principal -->
+        <div class="space-y-6 bg-black/30 backdrop-blur-sm p-8 rounded-xl">
+          <h1 class="text-4xl md:text-6xl font-bold tracking-tight uppercase font-satisfy text-white drop-shadow-lg">
+            Auténtica Cocina Mexicana
+          </h1>
+          
+          <p class="text-xl text-white/90 max-w-2xl mx-auto">
+            Sabores tradicionales de México en un ambiente acogedor y festivo
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
+            <a href="#menu" class="inline-block bg-[#E94E1B] hover:bg-[#D81B60] text-white px-8 py-3 rounded-full text-base font-medium transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+              <span class="flex items-center justify-center gap-2">
+                Ver Menú
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </a>
+            
+            <a href="#" class="inline-block border-2 border-white text-white hover:bg-white hover:text-[#E94E1B] px-8 py-3 rounded-full text-base font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+              <span class="flex items-center justify-center gap-2">
+                Reservar Mesa
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Elemento decorativo inferior -->
+        <div class="flex justify-center mt-8">
+          <div class="h-1 w-16 bg-[#4CAF50] rounded-full mx-1"></div>
+          <div class="h-1 w-16 bg-[#D81B60] rounded-full mx-1"></div>
+          <div class="h-1 w-16 bg-[#E94E1B] rounded-full mx-1"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Indicador de scroll -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </div>
+  </section>

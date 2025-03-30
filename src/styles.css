@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+@theme {
+
+    --color-primary: #E93271;
+    --color-secondary: #F8B22F;
+    --color-accent: #ED1F26;
+    --color-green: #089447;
+    --color-blue: #32338F;
+    --color-turquoise: #42BFB2;
+    --color-purple: #6C4A9C;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+    
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-luchador {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.font-nacho {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
