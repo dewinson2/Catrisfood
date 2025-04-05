@@ -1,0 +1,480 @@
+ <section id="menu-completo" class="py-16 bg-black/80 backdrop-blur-sm relative overflow-hidden min-h-screen">
+    <!-- Elementos decorativos de fondo -->
+    <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+      <div class="absolute top-10 right-10 w-40 h-40 bg-[#E94E1B] rounded-full"></div>
+      <div class="absolute bottom-10 left-10 w-60 h-60 bg-[#D81B60] rounded-full"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#4CAF50] rounded-full"></div>
+    </div>
+    
+    <!-- Patrón decorativo -->
+    <div class="absolute inset-0 opacity-10 pointer-events-none bg-repeat mix-blend-overlay" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+      <!-- Encabezado de la sección -->
+      <div class="text-center mb-12">
+        <div class="inline-block">
+          <h1 class="text-5xl font-bold text-white font-satisfy mb-4">Menú Completo</h1>
+          <div class="h-2 bg-[#D81B60] w-full mt-1 rounded-full opacity-70"></div>
+        </div>
+        <p class="text-white/80 max-w-2xl mx-auto mt-4">Descubre nuestra selección de auténticos platillos mexicanos, preparados con ingredientes frescos y recetas tradicionales.</p>
+        
+        <!-- Decoración mexicana -->
+        <div class="flex justify-center mt-6">
+          <div class="h-1 w-16 bg-[#E94E1B] rounded-full mx-1"></div>
+          <div class="h-1 w-16 bg-[#D81B60] rounded-full mx-1"></div>
+          <div class="h-1 w-16 bg-[#4CAF50] rounded-full mx-1"></div>
+        </div>
+      </div>
+
+      <!-- Navegación de categorías -->
+      
+      <app-navegacion-menu></app-navegacion-menu>
+      <!-- Sección: Entradas -->
+      <div id="entradas" class="mb-16">
+        <div class="flex items-center mb-8">
+          <h2 class="text-3xl font-bold text-white font-satisfy mr-4">Entradas</h2>
+          <div class="h-0.5 flex-grow bg-gradient-to-r from-[#E94E1B] to-transparent rounded-full"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Entrada 1: Guacamole -->
+          <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://placehold.co/600x400/4CAF50/ffffff?text=Guacamole" alt="Guacamole" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+              <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
+                RD$420.00
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">Guacamole Tradicional</h3>
+              <p class="text-white/80 mb-4">Aguacate fresco machacado con cebolla, cilantro, tomate, chile y un toque de limón. Servido con totopos crujientes recién hechos.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <span class="text-yellow-500">★★★★★</span>
+                  <span class="text-white/60 text-sm ml-1">(29)</span>
+                </div>
+                <button class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">Ordenar</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Entrada 2: Nachos -->
+          <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://placehold.co/600x400/FFC107/ffffff?text=Nachos" alt="Nachos" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+              <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
+                RD$490.00
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">Nachos Supremos</h3>
+              <p class="text-white/80 mb-4">Totopos cubiertos con frijoles refritos, queso fundido, guacamole, crema agria, pico de gallo y jalapeños. Opción de pollo o carne.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <span class="text-yellow-500">★★★★☆</span>
+                  <span class="text-white/60 text-sm ml-1">(22)</span>
+                </div>
+                <button class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">Ordenar</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Entrada 3: Queso Fundido -->
+          <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://placehold.co/600x400/FF9800/ffffff?text=Queso+Fundido" alt="Queso Fundido" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+              <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
+                RD$470.00
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">Queso Fundido</h3>
+              <p class="text-white/80 mb-4">Delicioso queso fundido con chorizo, champiñones o rajas de chile poblano. Servido con tortillas de maíz calientes.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <span class="text-yellow-500">★★★★☆</span>
+                  <span class="text-white/60 text-sm ml-1">(19)</span>
+                </div>
+                <button class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">Ordenar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Sección: Tacos -->
+      <div id="tacos" class="mb-16">
+        <div class="flex items-center mb-8">
+          <h2 class="text-3xl font-bold text-white font-satisfy mr-4">Tacos</h2>
+          <div class="h-0.5 flex-grow bg-gradient-to-r from-[#E94E1B] to-transparent rounded-full"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Taco 1: Tacos al Pastor -->
+          <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen%20de%20WhatsApp%202025-03-22%20a%20las%2013.31.41_26b50582.jpg-4QHfB0tvasC9orjFvpap9xq6TjrRu3.jpeg" alt="Tacos al Pastor" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+              <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
+                RD$450.00
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">Tacos al Pastor</h3>
+              <p class="text-white/80 mb-4">Deliciosos tacos de carne marinada, servidos con cilantro, cebolla, limón y nuestras salsas caseras.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <span class="text-yellow-500">★★★★★</span>
+                  <span class="text-white/60 text-sm ml-1">(24)</span>
+                </div>
+                <button class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">Ordenar</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Taco 2: Tacos de Carnitas -->
+          <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://placehold.co/600x400/FF9800/ffffff?text=Tacos+de+Carnitas" alt="Tacos de Carnitas" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+              <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
+                RD$460.00
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">Tacos de Carnitas</h3>
+              <p class="text-white/80 mb-4">Tacos de cerdo confitado lentamente, servidos con cebolla, cilantro y salsa verde fresca.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <span class="text-yellow-500">★★★★☆</span>
+                  <span class="text-white/60 text-sm ml-1">(20)</span>
+                </div>
+                <button class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">Ordenar</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Taco 3: Tacos Variados -->
+          <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen%20de%20WhatsApp%202025-03-22%20a%20las%2013.31.40_9ebda2f8.jpg-G7Gt80auIAnBjf2BFqO5D8fzGnWgGU.jpeg" alt="Tacos Variados" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+              <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
+                RD$520.00
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">Tacos Variados</h3>
+              <p class="text-white/80 mb-4">Selección de tacos con diferentes proteínas, acompañados de guacamole, pico de gallo y salsa.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <span class="text-yellow-500">★★★★★</span>
+                  <span class="text-white/60 text-sm ml-1">(32)</span>
+                </div>
+                <button class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">Ordenar</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Taco 4: Tacos de Pescado -->
+          <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://placehold.co/600x400/03A9F4/ffffff?text=Tacos+de+Pescado" alt="Tacos de Pescado" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+              <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
+                RD$480.00
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">Tacos de Pescado</h3>
+              <p class="text-white/80 mb-4">Filete de pescado fresco empanizado, servido con repollo, pico de gallo y aderezo de chipotle.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <span class="text-yellow-500">★★★★☆</span>
+                  <span class="text-white/60 text-sm ml-1">(17)</span>
+                </div>
+                <button class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">Ordenar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Sección: Platos Fuertes -->
+      <div id="platos-fuertes" class="mb-16">
+        <div class="flex items-center mb-8">
+          <h2 class="text-3xl font-bold text-white font-satisfy mr-4">Platos Fuertes</h2>
+          <div class="h-0.5 flex-grow bg-gradient-to-r from-[#E94E1B] to-transparent rounded-full"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Plato 1: Flautas de Pollo -->
+          <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen%20de%20WhatsApp%202025-03-22%20a%20las%2013.31.41_31bd68eb.jpg-aa1wO3JJZf4kKSTn9qbE1Jxn9dBFbD.jpeg" alt="Flautas de Pollo" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+              <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
+                RD$380.00
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">Flautas de Pollo</h3>
+              <p class="text-white/80 mb-4">Crujientes flautas de pollo, acompañadas de lechuga, pico de gallo, crema y guacamole.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <span class="text-yellow-500">★★★★☆</span>
+                  <span class="text-white/60 text-sm ml-1">(18)</span>
+                </div>
+                <button class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">Ordenar</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Plato 2: Enchiladas Verdes -->
+          <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://placehold.co/600x400/4CAF50/ffffff?text=Enchiladas" alt="Enchiladas Verdes" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+              <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
+                RD$560.00
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">Enchiladas Verdes</h3>
+              <p class="text-white/80 mb-4">Tortillas de maíz rellenas de pollo desmenuzado, bañadas en salsa verde, crema, queso fresco y cebolla. Servidas con arroz y frijoles.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <span class="text-yellow-500">★★★★☆</span>
+                  <span class="text-white/60 text-sm ml-1">(21)</span>
+                </div>
+                <button class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">Ordenar</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Plato 3: Chiles Rellenos -->
+          <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://placehold.co/600x400/FF9800/ffffff?text=Chiles+Rellenos" alt="Chiles Rellenos" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+              <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
+                RD$590.00
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">Chiles Rellenos</h3>
+              <p class="text-white/80 mb-4">Chiles poblanos rellenos de queso, capeados y bañados en salsa de tomate. Servidos con arroz, frijoles y tortillas.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <span class="text-yellow-500">★★★★★</span>
+                  <span class="text-white/60 text-sm ml-1">(26)</span>
+                </div>
+                <button class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">Ordenar</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Plato 4: Mole Poblano -->
+          <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://placehold.co/600x400/795548/ffffff?text=Mole+Poblano" alt="Mole Poblano" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+              <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
+                RD$620.00
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">Mole Poblano</h3>
+              <p class="text-white/80 mb-4">Pechuga de pollo bañada en nuestra salsa de mole casero, elaborado con más de 20 ingredientes, incluyendo chiles, chocolate, especias y frutos secos.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <span class="text-yellow-500">★★★★★</span>
+                  <span class="text-white/60 text-sm ml-1">(30)</span>
+                </div>
+                <button class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">Ordenar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Sección: Ensaladas -->
+      <div id="ensaladas" class="mb-16">
+        <div class="flex items-center mb-8">
+          <h2 class="text-3xl font-bold text-white font-satisfy mr-4">Ensaladas</h2>
+          <div class="h-0.5 flex-grow bg-gradient-to-r from-[#E94E1B] to-transparent rounded-full"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Ensalada 1: Ensalada Catris -->
+          <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://placehold.co/600x400/4CAF50/ffffff?text=Ensalada+Catris" alt="Ensalada Catris" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+              <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
+                RD$580.00
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">Ensalada Catris</h3>
+              <p class="text-white/80 mb-4">Nuestra deliciosa ensalada es un arcoíris de sabores! Con lechuga crujiente, pepinos frescos, aguacate, tomates jugosos, rúcula picante y rábanos que crujen.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <span class="text-yellow-500">★★★★☆</span>
+                  <span class="text-white/60 text-sm ml-1">(15)</span>
+                </div>
+                <button class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">Ordenar</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Ensalada 2: Ensalada de Nopal -->
+          <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://placehold.co/600x400/8BC34A/ffffff?text=Ensalada+de+Nopal" alt="Ensalada de Nopal" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+              <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
+                RD$490.00
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">Ensalada de Nopal</h3>
+              <p class="text-white/80 mb-4">Nopal fresco cortado en tiras, con tomate, cebolla, cilantro, queso fresco y aderezo de limón. Una opción fresca y tradicional.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <span class="text-yellow-500">★★★★☆</span>
+                  <span class="text-white/60 text-sm ml-1">(12)</span>
+                </div>
+                <button class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">Ordenar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Sección: Postres -->
+      <div id="postres" class="mb-16">
+        <div class="flex items-center mb-8">
+          <h2 class="text-3xl font-bold text-white font-satisfy mr-4">Postres</h2>
+          <div class="h-0.5 flex-grow bg-gradient-to-r from-[#E94E1B] to-transparent rounded-full"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Postre 1: Flan de Caramelo -->
+          <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://placehold.co/600x400/FFC107/ffffff?text=Flan" alt="Flan de Caramelo" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+              <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
+                RD$320.00
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">Flan de Caramelo</h3>
+              <p class="text-white/80 mb-4">Suave y cremoso flan casero bañado en caramelo. Un clásico postre mexicano que derrite el paladar.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <span class="text-yellow-500">★★★★★</span>
+                  <span class="text-white/60 text-sm ml-1">(27)</span>
+                </div>
+                <button class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">Ordenar</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Postre 2: Churros con Chocolate -->
+          <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://placehold.co/600x400/795548/ffffff?text=Churros" alt="Churros con Chocolate" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+              <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
+                RD$350.00
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">Churros con Chocolate</h3>
+              <p class="text-white/80 mb-4">Churros recién hechos, crujientes por fuera y suaves por dentro, espolvoreados con azúcar y canela. Servidos con salsa de chocolate caliente.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <span class="text-yellow-500">★★★★★</span>
+                  <span class="text-white/60 text-sm ml-1">(31)</span>
+                </div>
+                <button class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">Ordenar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Sección: Bebidas -->
+      <div id="bebidas" class="mb-16">
+        <div class="flex items-center mb-8">
+          <h2 class="text-3xl font-bold text-white font-satisfy mr-4">Bebidas</h2>
+          <div class="h-0.5 flex-grow bg-gradient-to-r from-[#E94E1B] to-transparent rounded-full"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Bebida 1: Margarita Clásica -->
+          <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://placehold.co/600x400/CDDC39/ffffff?text=Margarita" alt="Margarita Clásica" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+              <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
+                RD$280.00
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">Margarita Clásica</h3>
+              <p class="text-white/80 mb-4">Tequila, triple sec y jugo de limón fresco, servida con borde escarchado de sal. Disponible en sabores de fresa, mango o tamarindo.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <span class="text-yellow-500">★★★★★</span>
+                  <span class="text-white/60 text-sm ml-1">(35)</span>
+                </div>
+                <button class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">Ordenar</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Bebida 2: Agua de Jamaica -->
+          <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://placehold.co/600x400/D81B60/ffffff?text=Agua+de+Jamaica" alt="Agua de Jamaica" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+              <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
+                RD$120.00
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">Agua de Jamaica</h3>
+              <p class="text-white/80 mb-4">Refrescante agua de flor de Jamaica, ligeramente endulzada y con un toque de limón.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <span class="text-yellow-500">★★★★☆</span>
+                  <span class="text-white/60 text-sm ml-1">(22)</span>
+                </div>
+                <button class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">Ordenar</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Bebida 3: Horchata -->
+          <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://placehold.co/600x400/F5F5F5/333333?text=Horchata" alt="Horchata" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+              <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
+                RD$120.00
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">Horchata</h3>
+              <p class="text-white/80 mb-4">Deliciosa bebida de arroz con leche, canela y vainilla. Servida bien fría con hielo.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <span class="text-yellow-500">★★★★☆</span>
+                  <span class="text-white/60 text-sm ml-1">(19)</span>
+                </div>
+                <button class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">Ordenar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Botón para volver -->
+      <div class="text-center mt-12">
+        <a href="index.html" class="inline-flex items-center gap-2 bg-[#E94E1B] hover:bg-[#D81B60] text-white px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+          </svg>
+          Volver al Inicio
+        </a>
+      </div>
+    </div>
+  </section>

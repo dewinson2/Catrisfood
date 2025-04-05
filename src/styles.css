@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
 
+
 @theme {
 
     --color-primary: #E93271;
@@ -30,4 +31,7 @@ body {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.03em;
+}
+html {
+  scroll-behavior: smooth;
 }
