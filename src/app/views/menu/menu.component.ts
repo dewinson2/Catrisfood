@@ -37,29 +37,29 @@ export class MenuComponent {
       items: [
         {
           id: 1,
-          title: 'Guacamole Tradicional',
-          description: 'Aguacate fresco machacado con cebolla, cilantro, tomate, chile y un toque de limón. Servido con totopos crujientes recién hechos.',
-          price: 420,
-          image: 'https://placehold.co/600x400/4CAF50/ffffff?text=Guacamole',
+          title: 'MINICAHNGAS LA GUEREJA',
+          description: '3 DELICIOSAS TORTILLAS DE TRIGO RELLENAS DE POLLO, SALSA ROJA Y UNA CREMA AGRIA QUE TE HARÁ BAILAR DE FELICIDAD..',
+          price: 380,
+          image: 'https://placehold.co/600x400/4CAF50/ffffff?text=Minichangas',
           rating: 5,
           reviews: 29
         },
         {
           id: 2,
-          title: 'Nachos Supremos',
-          description: 'Totopos cubiertos con frijoles refritos, queso fundido, guacamole, crema agria, pico de gallo y jalapeños. Opción de pollo o carne.',
-          price: 490,
-          image: 'https://placehold.co/600x400/FFC107/ffffff?text=Nachos',
-          rating: 4,
+          title: 'TOTOPOS CHESPIRITO',
+          description: 'TOTOPOS CRUJIENTES CON UNA FIESTA DE QUESOPICO DE GALLO Y GUACAMOLE Y UNA SALSA ROJA QUE BAILA EN TU BOCA.',
+          price: 380,
+          image: 'totopos.jpg',
+          rating: 5,
           reviews: 22
         },
         {
           id: 3,
-          title: 'Queso Fundido',
-          description: 'Delicioso queso fundido con chorizo, champiñones o rajas de chile poblano. Servido con tortillas de maíz calientes.',
-          price: 470,
-          image: 'https://placehold.co/600x400/FF9800/ffffff?text=Queso+Fundido',
-          rating: 4,
+          title: 'Quesadilla frita doña florinda',
+          description: '3 deliciosas tortillas de maíz frita, abranzando queso blanco, salsa roja y una nube de crema agria.',
+          price: 380,
+          image: 'quesallidas.jpg',
+          rating: 5,
           reviews: 19
         }
       ]
@@ -77,157 +77,191 @@ export class MenuComponent {
           rating: 5,
           reviews: 24
         },
-        {
-          id: 5,
-          title: 'Tacos de Carnitas',
-          description: 'Tacos de cerdo confitado lentamente, servidos con cebolla, cilantro y salsa verde fresca.',
-          price: 460,
-          image: 'https://placehold.co/600x400/FF9800/ffffff?text=Tacos+de+Carnitas',
-          rating: 4,
-          reviews: 20
-        },
-        {
-          id: 6,
-          title: 'Tacos Variados',
-          description: 'Selección de tacos con diferentes proteínas, acompañados de guacamole, pico de gallo y salsa.',
-          price: 520,
-          image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen%20de%20WhatsApp%202025-03-22%20a%20las%2013.31.40_9ebda2f8.jpg-G7Gt80auIAnBjf2BFqO5D8fzGnWgGU.jpeg',
-          rating: 5,
-          reviews: 32
-        },
+       
         {
           id: 7,
-          title: 'Tacos de Pescado',
-          description: 'Filete de pescado fresco empanizado, servido con repollo, pico de gallo y aderezo de chipotle.',
-          price: 480,
-          image: 'https://placehold.co/600x400/03A9F4/ffffff?text=Tacos+de+Pescado',
-          rating: 4,
-          reviews: 17
+          title: 'Tostadistos Res Pollo Mixto o al Pastor',
+          description: 'Tu proteína favorita, 4 sabrosas tortillas de trigo o maíz, queso delicioso, pico de gallo y un guacamole cremoso, salsa roja.',
+          price: 490,
+          image: 'tostadita.jpg',
+          rating: 5,
+          reviews: 16
+        },
+        {
+
+
+
+          id: 8,
+          title: 'Tacos de Birria',
+          description: 'Guiso de carne osobusco, 4 raciones, tortillas de maíz, queso, cilantro cebolla, consomé del guiso, y salsa picante que hace bailar los sabores.',
+          price: 680,
+          image: 'birria.jpg',
+          rating: 5,
+          reviews: 20
+        },
+        
+        {
+          id: 9,
+          title: 'Tacos los chiflados res pollo o mixto',
+          description: 'Tu proteína favorita, 3 deliciosas opciones tortilla de Maíz o trigo, pico de gallo guacamole salsa roja y crema agria.¡Fiesta de sabores!',
+          price: 480 ,
+          image: 'chiflados.jpg',
+          rating: 5,
+          reviews: 10
         }
       ]
     },
     {
-      id: 'platos-fuertes',
-      name: 'Platos Fuertes',
+      id: 'totopos',
+      name: 'Totopos',
       items: [
         {
           id: 8,
-          title: 'Flautas de Pollo',
-          description: 'Crujientes flautas de pollo, acompañadas de lechuga, pico de gallo, crema y guacamole.',
-          price: 380,
-          image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen%20de%20WhatsApp%202025-03-22%20a%20las%2013.31.41_31bd68eb.jpg-aa1wO3JJZf4kKSTn9qbE1Jxn9dBFbD.jpeg',
-          rating: 4,
+          title: 'TOTOPOS RANCHO GRANDE (NACHOS)',
+          description: 'TOTOPOS CRUJIENTES CARGADOS CON CARNE MOLIDA, QUESO, CREMA DE QUESO, CREMA AGRIA, GUACAMOLE Y PICO DE GALLO..',
+          price: 580,
+          image: 'RanchoGrande.jpg',
+          rating: 5,
           reviews: 18
         },
         {
           id: 9,
-          title: 'Enchiladas Verdes',
-          description: 'Tortillas de maíz rellenas de pollo desmenuzado, bañadas en salsa verde, crema, queso fresco y cebolla. Servidas con arroz y frijoles.',
-          price: 560,
-          image: 'https://placehold.co/600x400/4CAF50/ffffff?text=Enchiladas',
-          rating: 4,
+          title: 'CHILAQUILES CANTINFLAS RES-POLLO MIXTO',
+          description: 'TOTOPOS CRUJIENTES BAÑADOS EN SALSA ROJA O VERDE SUAVE O PICANTE, PROTEÍNA DE ELECCION, CREMA AGRIA, GUACAMOLE Y PICO DE GALLO.',
+          price: 650,
+          image: '',
+          rating: 5,
           reviews: 21
         },
         {
           id: 10,
-          title: 'Chiles Rellenos',
-          description: 'Chiles poblanos rellenos de queso, capeados y bañados en salsa de tomate. Servidos con arroz, frijoles y tortillas.',
-          price: 590,
-          image: 'https://placehold.co/600x400/FF9800/ffffff?text=Chiles+Rellenos',
+          title: 'MIX DE TOTOPOS DE RES-POLLO O MIXTO',
+          description: 'TOTOPOS CRUJIENTES, REMATADOS CON CARNE MECHADADE RES, POLLO, QUESO DERRETIDO, PICO DE GALLO,GUACAMOLE Y UNA NUBE DE CREMA AGRIA.',
+          price: 580,
+          image: '',
           rating: 5,
           reviews: 26
-        },
-        {
-          id: 11,
-          title: 'Mole Poblano',
-          description: 'Pechuga de pollo bañada en nuestra salsa de mole casero, elaborado con más de 20 ingredientes, incluyendo chiles, chocolate, especias y frutos secos.',
-          price: 620,
-          image: 'https://placehold.co/600x400/795548/ffffff?text=Mole+Poblano',
-          rating: 5,
-          reviews: 30
         }
       ]
     },
     {
-      id: 'ensaladas',
-      name: 'Ensaladas',
+      id: 'QUESADILLAS',
+      name: 'QUESADILLAS',
       items: [
         {
           id: 12,
-          title: 'Ensalada Catris',
-          description: 'Nuestra deliciosa ensalada es un arcoíris de sabores! Con lechuga crujiente, pepinos frescos, aguacate, tomates jugosos, rúcula picante y rábanos que crujen.',
-          price: 580,
-          image: 'https://placehold.co/600x400/4CAF50/ffffff?text=Ensalada+Catris',
+          title: 'QUESADILLAS CATRINA',
+          description: 'QUESADILLA CON TORTILLA DE TRIGO XL RELLENA DE QUESO.',
+          price: 490,
+          image: '',
           rating: 4,
           reviews: 15
         },
         {
           id: 13,
-          title: 'Ensalada de Nopal',
-          description: 'Nopal fresco cortado en tiras, con tomate, cebolla, cilantro, queso fresco y aderezo de limón. Una opción fresca y tradicional.',
-          price: 490,
-          image: 'https://placehold.co/600x400/8BC34A/ffffff?text=Ensalada+de+Nopal',
-          rating: 4,
+          title: 'QUESADILLA A LA MULA',
+          description: 'TORTILLA DE TRIGO XL REPLETA DE QUESO, CARNE AL PASTOR, PICO DEGALLO, GUACAMOLE, SALSA ROJA Y CREMA AGRIA.',
+          price: 590,
+          image: '',
+          rating: 5,
           reviews: 12
         }
       ]
     },
     {
-      id: 'postres',
-      name: 'Postres',
+      id: 'BURRITOS',
+      name: 'BURRITOS',
       items: [
         {
           id: 14,
-          title: 'Flan de Caramelo',
-          description: 'Suave y cremoso flan casero bañado en caramelo. Un clásico postre mexicano que derrite el paladar.',
-          price: 320,
-          image: 'https://placehold.co/600x400/FFC107/ffffff?text=Flan',
+          title: 'BURRITOS BOJITAS RES-POLLO O MIXTO',
+          description: 'ELEGIR PROTEÍNA SABROSA, TORTILLA DE TRIGO XL CARGADA, LECHUGA,CARNE MECHADA, CREMA AGRIA, GUACAMOLE, PICO DE GALLO Y SALSA ROJA.',
+          price: 490,
+          image: 'bojitas.jpg',
           rating: 5,
           reviews: 27
         },
         {
           id: 15,
-          title: 'Churros con Chocolate',
-          description: 'Churros recién hechos, crujientes por fuera y suaves por dentro, espolvoreados con azúcar y canela. Servidos con salsa de chocolate caliente.',
-          price: 350,
-          image: 'https://placehold.co/600x400/795548/ffffff?text=Churros',
+          title: 'BURRITO DON BARRIGA MIXTO',
+          description: 'TORTILLA DE TRIGO XL CARGADA CON UN FESTÍN DE CARNE, TOCINETA, PLÁTANO MADURO, LECHUGA, SALSA ROJA, CREMA AGRIA Y AGUACATE.',
+          price: 630,
+          image: 'barriga.jpg',
           rating: 5,
           reviews: 31
         }
       ]
     },
     {
-      id: 'bebidas',
-      name: 'Bebidas',
+      id: 'FAJITAS',
+      name: 'FAJITAS',
       items: [
         {
           id: 16,
-          title: 'Margarita Clásica',
-          description: 'Tequila, triple sec y jugo de limón fresco, servida con borde escarchado de sal. Disponible en sabores de fresa, mango o tamarindo.',
-          price: 280,
-          image: 'https://placehold.co/600x400/CDDC39/ffffff?text=Margarita',
+          title: 'FAJITAS FRIDA RES-POLLO-MIXTA, CERDO O CAMARONES',
+          description: 'FAJITAS ELEGIR PROTEÍNA CON 4 TORTILLAS DE TRIGO SUAVECITAS, CREMA AGRIA, PICO DE GALLO Y UN DELICIOSO GUACAMOLE.',
+          price: 690,
+          
+          image: 'fajitas.jpg',
           rating: 5,
           reviews: 35
-        },
-        {
-          id: 17,
-          title: 'Agua de Jamaica',
-          description: 'Refrescante agua de flor de Jamaica, ligeramente endulzada y con un toque de limón.',
-          price: 120,
-          image: 'https://placehold.co/600x400/D81B60/ffffff?text=Agua+de+Jamaica',
-          rating: 4,
-          reviews: 22
-        },
-        {
-          id: 18,
-          title: 'Horchata',
-          description: 'Deliciosa bebida de arroz con leche, canela y vainilla. Servida bien fría con hielo.',
-          price: 120,
-          image: 'https://placehold.co/600x400/F5F5F5/333333?text=Horchata',
-          rating: 4,
-          reviews: 19
         }
+
+
       ]
+    },
+    {
+            id: 'Otros',
+            name: 'Otros',
+            items: [
+
+
+                {
+                    id: 17,
+                    title: 'CANASTA CATRIS MIXTA',
+                    description: 'CARRITO DE SABOR: TORTILLAS DE TRIGO REBOSANTES DE SABOR, CARNE MECHA MIXTA, LECHUGA CRUJIENTE, QUESO DERRETIDO, GUACAMOLE CREMOSO, PICO DE GALLO, SALSA ROJA. ¡UNA FIESTA EN CADA BOCADO!',
+                    price: 680,
+                    image: 'https://placehold.co/600x400/FFEB3B/ffffff?text=Canasta',
+                    rating: 5,
+                    reviews: 0
+                },
+                {
+                  id: 18,
+                  title: 'FLAUTA LA POPIS RES-POLLO O MIXTO',
+                  description: 'ESCOGE TU PROTEÍNA FAVORITA Y DISFRUTA DE 4 CRUJIENTES TORTILLAS DE MAÍZ FRITAS RELLENAS DE SABROSA CARNE, ACOMPAÑADAS DE CRUJIENTE LECHUGA, QUESO RICOTTA, CREMA AGRIA, PICO DE GALLO, SALSA ROJA Y GUACAMOLE. ¡UNA FIESTA PARA EL PALADAR!',
+                  price: 490,
+                  image: '',
+                  rating: 5,
+                  reviews: 0
+                },
+                {
+                  id: 19,
+                  title: 'CHIMICHANGA LA CHIMOLTRUFIA RES-POLLO O MIXTO',
+                  description: 'ESCOGE TU PROTEÍNA FAVORITA Y DISFRUTA DE UNA DELICIOSA TORTILLA DE TRIGO XL FRITA CARGADA DE CARNE, CREMA AGRIA, QUESO FUNDIDO, RICOTTA Y GUACAMOLE, SALSA ROJA. ¡UN FESTÍN PARA TU PALADAR!',
+                  price: 490,
+                  image: '',
+                  rating: 5,
+                  reviews: 0
+                },
+                {
+                  id: 20,
+                  title: 'TINGA DE POLLO',
+                  description: 'CARNE MECHADA, SALSA ESPECIAL DE CHILE Y CHIPOTLE, AGUACATE CREMOSO, QUESO RICOTTA, LECHUGA FRESCA Y UN TOQUE DE CREMA AGRIA, TODO APILADO EN 2 CRUJIENTES TOSTADAS DE MAÍZ.',
+                  price: 490,
+                  image: '',
+                  rating: 5,
+                  reviews: 0
+                },
+                {
+                  id: 21,
+                  title: 'TORTA LA CHINGONA',
+                  description: 'PAN RECIÉN HORNEADO, CARNE A LA PLANCHA, POLLO O CERDO, QUESO, CRUJIENTE REPOLLO, JUGOSO TOMATE, CEBOLLA, CHORIZO Y UNA DELICIOSA SALSA SECRETA DE LA CASA.',
+                  price: 680,
+                  image: 'chingona.jpg',
+                  rating: 5,
+                  reviews: 0
+                }
+            ]
     }
   ]);
 
