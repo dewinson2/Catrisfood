@@ -1,23 +1,16 @@
 <div class="flex overflow-x-auto pb-4 mb-8 gap-4 md:gap-8 md:justify-center">
-  <a href="menu/#entradas" class="whitespace-nowrap px-4 py-2 text-white font-medium border-b-2 border-[#E94E1B] hover:text-[#E94E1B] transition-colors">
-    Entradas
-  </a>
-  <a href="menu/#tacos" class="whitespace-nowrap px-4 py-2 text-white font-medium border-b-2 border-transparent hover:text-[#E94E1B] hover:border-[#E94E1B] transition-colors">
-    Tacos
-  </a>
-  <a href="menu/#totopos" class="whitespace-nowrap px-4 py-2 text-white font-medium border-b-2 border-transparent hover:text-[#E94E1B] hover:border-[#E94E1B] transition-colors">
-    Totopos
-  </a>
-  <a href="menu/#quesadillas" class="whitespace-nowrap px-4 py-2 text-white font-medium border-b-2 border-transparent hover:text-[#E94E1B] hover:border-[#E94E1B] transition-colors">
-    Quesadillas
-  </a>
-  <a href="menu/#burritos" class="whitespace-nowrap px-4 py-2 text-white font-medium border-b-2 border-transparent hover:text-[#E94E1B] hover:border-[#E94E1B] transition-colors">
-    Burritos
-  </a>
-  <a href="menu/#fajitas" class="whitespace-nowrap px-4 py-2 text-white font-medium border-b-2 border-transparent hover:text-[#E94E1B] hover:border-[#E94E1B] transition-colors">
-    Fajitas
-  </a>
-  <a href="menu/#otros" class="whitespace-nowrap px-4 py-2 text-white font-medium border-b-2 border-transparent hover:text-[#E94E1B] hover:border-[#E94E1B] transition-colors">
-    Otros
-  </a>
+  @for (item of menuItems; track item.id) {
+    <a 
+      [routerLink]="item.link" 
+      [fragment]="item.fragment"
+      class="whitespace-nowrap px-4 py-2 font-medium border-b-2 transition-colors"
+      [class.text-white]="!isActive(item.fragment)"
+      [class.text-[#E94E1B]]="isActive(item.fragment)"
+      [class.border-[#E94E1B]]="isActive(item.fragment)"
+      [class.border-transparent]="!isActive(item.fragment)"
+      routerLinkActive="active-link"
+    >
+      {{ item.label }}
+    </a>
+  }
 </div>
