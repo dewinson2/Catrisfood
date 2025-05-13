@@ -72,7 +72,7 @@ export class MenuComponent {
           id: 4,
           title: 'Tacos al Pastor',
           description: 'Deliciosos tacos de carne marinada, servidos con cilantro, cebolla, limón y nuestras salsas caseras.',
-          price: 450,
+          price: 490,
           image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen%20de%20WhatsApp%202025-03-22%20a%20las%2013.31.41_26b50582.jpg-4QHfB0tvasC9orjFvpap9xq6TjrRu3.jpeg',
           rating: 5,
           reviews: 24
@@ -81,7 +81,7 @@ export class MenuComponent {
           id: 7,
           title: 'Tostaditos Res Pollo Mixto o al Pastor',
           description: 'Tu proteína favorita, 4 sabrosas tortillas de trigo o maíz, queso delicioso, pico de gallo y un guacamole cremoso, salsa roja.',
-          price: 490,
+          price: 480,
           image: 'tostadita.jpg',
           rating: 5,
           reviews: 16
