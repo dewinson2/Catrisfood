@@ -1,0 +1,42 @@
+<form #formRef="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+  <!-- Seleccionar la Categoria-->
+  <label for="category">
+    <select name="category" id="category" required [(ngModel)]="formValues.category">
+      <option value="" disabled selected>Select a category</option>
+      @for (category of menuData(); track category.id) {
+        <option [value]="category.id">{{ category.name }}</option>
+      }
+    </select>
+  </label>
+
+  <label for="itemCategory">
+    <input type="text" name="itemCategory" id="itemCategory" required
+           [(ngModel)]="formValues.itemCategory"
+           placeholder="Enter item category" />
+  </label>
+
+  <label for="itemName">
+    <input type="text" id="itemName" name="itemName" required
+           [(ngModel)]="formValues.itemName"
+           placeholder="Enter item name" />
+  </label>
+
+  <label for="itemDescription">
+    <textarea id="itemDescription" name="itemDescription" required
+              [(ngModel)]="formValues.itemDescription"
+              placeholder="Enter item description"></textarea>
+  </label>
+
+  <label for="itemPrice">
+    <input type="number" id="itemPrice" name="itemPrice" required
+           [(ngModel)]="formValues.itemPrice"
+           placeholder="Enter item price" />
+  </label>
+
+  <label for="itemImage">
+    <input type="file" id="itemImage" name="itemImage"
+           (change)="handleImageUpload($event)" accept="image/*" required />
+  </label>
+
+  <button type="submit">Add Item</button>
+</form>
