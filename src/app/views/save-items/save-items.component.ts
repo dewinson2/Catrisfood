@@ -40,9 +40,21 @@ menuData = signal<MenuCategory[]>([]);
     this.selectedCategoryId = categoryId;
     this.selectedItemId = null; // Reset selected item when category changes
   }
+   addCategory(categoryName: string) {
+    if (!categoryName) {
+      alert('Category name is required');
+      return;
+    }
 
-  
- 
+    const newCategory: MenuCategory = {
+      id: Date.now().toString(),
+      name: categoryName,
+      items: [],
+    };
+
+    this.adminService.addMenuCategory(newCategory);
+    console.log('Category added:', newCategory);
+  }
 
   addItem(categoryId: string, item: MenuItem) {
     this.adminService.addMenuItem(categoryId, item);
@@ -69,6 +81,7 @@ handleImageUpload(event: Event) {
     reader.readAsDataURL(file);
   }
 }
+
 onSubmit() {
   if (!this.formValues.category || !this.uploadedImageBase64) {
     alert('Faltan datos');

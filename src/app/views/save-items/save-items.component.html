@@ -40,3 +40,9 @@
 
   <button type="submit">Add Item</button>
 </form>
+ <form #formRef="ngForm" (ngSubmit)="addCategory(formValues.category)" enctype="multipart/form-data">
+  <label for="categoryName">Category Name:</label>
+  <input type="text" id="categoryName" [(ngModel)]="formValues.category" name="categoryName" required />
+  <button type="submit">Add Category</button>
+</form>
+
