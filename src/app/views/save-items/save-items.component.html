@@ -1,0 +1,231 @@
+<div class="save-items-container">
+  <!-- Mensajes de notificación -->
+  <div class="message-container" *ngIf="message()">
+    <div class="message" [class]="'message-' + messageType()">
+      {{ message() }}
+    </div>
+  </div>
+
+  <div class="header">
+    <h1>Gestionar Menú</h1>
+    <p>Añade nuevas categorías e items al menú del restaurante</p>
+  </div>
+
+  <!-- Sección de Categorías -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Categorías</h2>
+      <button 
+        class="btn btn-primary" 
+        (click)="showAddCategoryForm()"
+        [disabled]="isAddingCategory()">
+        <i class="fas fa-plus"></i> Nueva Categoría
+      </button>
+    </div>
+
+    <!-- Formulario para añadir categoría -->
+    <div class="form-container" *ngIf="isAddingCategory()">
+      <div class="form-card">
+        <h3>Añadir Nueva Categoría</h3>
+        <form (ngSubmit)="addCategory()" #categoryForm="ngForm">
+          <div class="form-group">
+            <label for="categoryName">Nombre de la Categoría:</label>
+            <input 
+              type="text" 
+              id="categoryName"
+              name="categoryName"
+              [(ngModel)]="newCategory.name"
+              required
+              placeholder="Ej: Platos Principales"
+              class="form-control">
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-success" [disabled]="!newCategory.name.trim()">
+              <i class="fas fa-save"></i> Guardar Categoría
+            </button>
+            <button type="button" class="btn btn-secondary" (click)="cancelAddCategory()">
+              <i class="fas fa-times"></i> Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Lista de categorías existentes -->
+    <div class="categories-list" *ngIf="getCategories().length > 0">
+      <div class="category-item" *ngFor="let category of getCategories()">
+        <div class="category-info">
+          <h4>{{ category.name }}</h4>
+          <span class="item-count">{{ category.items.length }} items</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección de Items -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Items del Menú</h2>
+      <button 
+        class="btn btn-primary" 
+        (click)="showAddItemForm()"
+        [disabled]="isAddingItem() || getCategories().length === 0">
+        <i class="fas fa-plus"></i> Nuevo Item
+      </button>
+    </div>
+
+    <!-- Formulario para añadir item -->
+    <div class="form-container" *ngIf="isAddingItem()">
+      <div class="form-card">
+        <h3>Añadir Nuevo Item</h3>
+        <form (ngSubmit)="addItem()" #itemForm="ngForm">
+          <div class="form-group">
+            <label for="categorySelect">Categoría:</label>
+            <select 
+              id="categorySelect"
+              name="categorySelect"
+              [(ngModel)]="selectedCategory"
+              (change)="onCategoryChange(selectedCategory())"
+              required
+              class="form-control">
+              <option value="">Selecciona una categoría</option>
+              <option *ngFor="let category of getCategories()" [value]="category.id">
+                {{ category.name }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="itemTitle">Título del Item:</label>
+            <input 
+              type="text" 
+              id="itemTitle"
+              name="itemTitle"
+              [(ngModel)]="newItem.title"
+              required
+              placeholder="Ej: Tacos de Birria"
+              class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="itemDescription">Descripción:</label>
+            <textarea 
+              id="itemDescription"
+              name="itemDescription"
+              [(ngModel)]="newItem.description"
+              required
+              placeholder="Describe el plato..."
+              rows="3"
+              class="form-control"></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="itemPrice">Precio ($):</label>
+              <input 
+                type="number" 
+                id="itemPrice"
+                name="itemPrice"
+                [(ngModel)]="newItem.price"
+                required
+                min="0"
+                step="0.01"
+                class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label for="itemImage">Imagen del Item:</label>
+              <div class="image-upload-container">
+                <input 
+                  type="file" 
+                  id="itemImage"
+                  name="itemImage"
+                  accept="image/*"
+                  (change)="onImageSelected($event)"
+                  class="form-control file-input">
+                <div class="image-preview" *ngIf="imagePreview()">
+                  <img [src]="imagePreview()" [alt]="'Vista previa de ' + newItem.title" class="preview-image">
+                  <button type="button" class="clear-image-btn" (click)="clearSelectedImage()">
+                    <i class="fas fa-times"></i> Eliminar
+                  </button>
+                </div>
+                <div class="upload-hint" *ngIf="!imagePreview()">
+                  <i class="fas fa-cloud-upload-alt"></i>
+                  <p>Haz clic para seleccionar una imagen (máximo 5MB)</p>
+                  <p class="supported-formats">Formatos soportados: JPG, PNG, GIF, WebP</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="itemRating">Calificación (1-5):</label>
+              <input 
+                type="number" 
+                id="itemRating"
+                name="itemRating"
+                [(ngModel)]="newItem.rating"
+                min="1"
+                max="5"
+                class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label for="itemReviews">Número de Reseñas:</label>
+              <input 
+                type="number" 
+                id="itemReviews"
+                name="itemReviews"
+                [(ngModel)]="newItem.reviews"
+                min="0"
+                class="form-control">
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button 
+              type="submit" 
+              class="btn btn-success" 
+              [disabled]="!selectedCategory() || !newItem.title.trim() || !newItem.description.trim()">
+              <i class="fas fa-save"></i> Guardar Item
+            </button>
+            <button type="button" class="btn btn-secondary" (click)="cancelAddItem()">
+              <i class="fas fa-times"></i> Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Mensaje si no hay categorías -->
+    <div class="no-categories" *ngIf="getCategories().length === 0">
+      <p>No hay categorías disponibles. Primero crea una categoría para poder añadir items.</p>
+    </div>
+  </div>
+
+  <!-- Vista previa del menú -->
+  <div class="section" *ngIf="getCategories().length > 0">
+    <h2>Vista Previa del Menú</h2>
+    <div class="menu-preview">
+      <div class="category-preview" *ngFor="let category of getCategories()">
+        <h3>{{ category.name }}</h3>
+        <div class="items-grid">
+          <div class="item-card" *ngFor="let item of category.items">
+            <div class="item-image">
+              <img [src]="item.image || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjNmNGY2Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzY2NzM4NyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlbiBubyBkaXNwb25pYmxlPC90ZXh0Pjwvc3ZnPg=='" [alt]="item.title">
+            </div>
+            <div class="item-info">
+              <h4>{{ item.title }}</h4>
+              <p>{{ item.description }}</p>
+              <div class="item-meta">
+                <span class="price">${{ item.price }}</span>
+                <span class="rating">⭐ {{ item.rating }}/5 ({{ item.reviews }})</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

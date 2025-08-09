@@ -26,79 +26,63 @@
       </div>
   
       <!-- Platillos destacados -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
-        <!-- Platillo 1 -->
-        <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
-          <div class="relative h-64 overflow-hidden">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen%20de%20WhatsApp%202025-03-22%20a%20las%2013.31.41_26b50582.jpg-4QHfB0tvasC9orjFvpap9xq6TjrRu3.jpeg" alt="Tacos al Pastor" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-            <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
-              RD$450.00
-            </div>
-          </div>
-          <div class="p-5">
-            <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">Tacos al Pastor</h3>
-            <p class="text-white/80 mb-4">Deliciosos tacos de carne marinada, servidos con cilantro, cebolla, limón y nuestras salsas caseras.</p>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center">
-                <span class="text-yellow-500">★★★★★</span>
-                <span class="text-white/60 text-sm ml-1">(24)</span>
+      @if (featuredDishes().length > 0) {
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+          @for (dish of featuredDishes(); track dish.id) {
+            <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
+              <div class="relative h-64 overflow-hidden">
+                <img [src]="dish.image || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjNmNGY2Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzY2NzM4NyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlbiBubyBkaXNwb25pYmxlPC90ZXh0Pjwvc3ZnPg=='" 
+                     [alt]="dish.title" 
+                     class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
+                  RD${{ dish.price }}.00
+                </div>
               </div>
-              <button class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">Ordenar</button>
+              <div class="p-5">
+                <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">{{ dish.title }}</h3>
+                <p class="text-white/80 mb-4">{{ dish.description }}</p>
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center">
+                    <span class="text-yellow-500">{{ getRatingStars(dish.rating) }}</span>
+                    <span class="text-white/60 text-sm ml-1">({{ dish.reviews }})</span>
+                  </div>
+                  <button (click)="handleOrder(dish)" 
+                          class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">
+                    Ordenar
+                  </button>
+                </div>
+              </div>
             </div>
+          }
+        </div>
+      } @else {
+        <!-- Mensaje cuando no hay platillos disponibles -->
+        <div class="text-center py-12 mb-10">
+          <div class="bg-black/40 backdrop-blur-sm rounded-xl p-8 border border-white/10">
+            <div class="text-6xl mb-4">🍽️</div>
+            <h3 class="text-2xl font-bold text-white font-satisfy mb-2">¡Próximamente!</h3>
+            <p class="text-white/80 mb-6">Estamos preparando nuestros platillos más deliciosos para ti.</p>
+            <a routerLink="/menu" 
+               class="inline-flex items-center gap-2 bg-[#E94E1B] hover:bg-[#D81B60] text-white px-6 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+              Ver Menú Completo
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </a>
           </div>
         </div>
-  
-        <!-- Platillo 2 -->
-        <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
-          <div class="relative h-64 overflow-hidden">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen%20de%20WhatsApp%202025-03-22%20a%20las%2013.31.41_31bd68eb.jpg-aa1wO3JJZf4kKSTn9qbE1Jxn9dBFbD.jpeg" alt="Flautas de Pollo" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-            <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
-              RD$380.00
-            </div>
-          </div>
-          <div class="p-5">
-            <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">Flautas de Pollo</h3>
-            <p class="text-white/80 mb-4">Crujientes flautas de pollo, acompañadas de lechuga, pico de gallo, crema y guacamole.</p>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center">
-                <span class="text-yellow-500">★★★★☆</span>
-                <span class="text-white/60 text-sm ml-1">(18)</span>
-              </div>
-              <button class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">Ordenar</button>
-            </div>
-          </div>
-        </div>
-  
-        <!-- Platillo 3 -->
-        <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
-          <div class="relative h-64 overflow-hidden">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen%20de%20WhatsApp%202025-03-22%20a%20las%2013.31.40_9ebda2f8.jpg-G7Gt80auIAnBjf2BFqO5D8fzGnWgGU.jpeg" alt="Tacos Variados" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-            <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
-              RD$520.00
-            </div>
-          </div>
-          <div class="p-5">
-            <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">Tacos Variados</h3>
-            <p class="text-white/80 mb-4">Selección de tacos con diferentes proteínas, acompañados de guacamole, pico de gallo y salsa.</p>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center">
-                <span class="text-yellow-500">★★★★★</span>
-                <span class="text-white/60 text-sm ml-1">(32)</span>
-              </div>
-              <button class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">Ordenar</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      }
   
       <!-- Botón Ver Más -->
-      <div class="text-center">
-        <a href="/menu" class="inline-flex items-center gap-2 bg-[#E94E1B] hover:bg-[#D81B60] text-white px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
-          Ver Menú Completo
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-          </svg>
-        </a>
-      </div>
+      @if (featuredDishes().length > 0) {
+        <div class="text-center">
+          <a routerLink="/menu" class="inline-flex items-center gap-2 bg-[#E94E1B] hover:bg-[#D81B60] text-white px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+            Ver Menú Completo
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      }
     </div>
   </section>
