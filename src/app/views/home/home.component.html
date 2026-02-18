@@ -16,7 +16,10 @@
      <app-eventos></app-eventos>
   
       <!-- Ubicación -->
-      <app-ubicacion></app-ubicacion>
+       @defer {
+          <app-ubicacion></app-ubicacion>
+       }
+    
   
       <!-- Reserva -->
       <app-reserva></app-reserva>
