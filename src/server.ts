@@ -26,17 +26,20 @@ const commonEngine = new CommonEngine();
 
 /**
  * Serve static files from /browser
+ * Solo cachear archivos con hash (JS, CSS, assets) por 1 año.
+ * index.html NO se cachea para evitar datos obsoletos.
  */
 app.get(
   '**',
   express.static(browserDistFolder, {
     maxAge: '1y',
-    index: 'index.html'
+    index: false, // No servir index.html como estático — lo maneja el SSR
   }),
 );
 
 /**
  * Handle all other requests by rendering the Angular application.
+ * Se agregan headers no-cache para que el navegador siempre pida HTML fresco.
  */
 app.get('**', (req, res, next) => {
   const { protocol, originalUrl, baseUrl, headers } = req;
@@ -49,7 +52,12 @@ app.get('**', (req, res, next) => {
       publicPath: browserDistFolder,
       providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
     })
-    .then((html) => res.send(html))
+    .then((html) => {
+      res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+      res.set('Pragma', 'no-cache');
+      res.set('Expires', '0');
+      res.send(html);
+    })
     .catch((err) => next(err));
 });
 
