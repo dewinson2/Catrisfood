@@ -1,7 +1,7 @@
 import { Injectable, inject, signal, computed, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
-import { APIService, AuthUser, LoginDTO, RegisterDTO } from '../api.service';
+import { APIService, AuthUser, LoginDTO } from '../api.service';
 import { tap, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
@@ -46,21 +46,6 @@ export class AuthService {
   login(data: LoginDTO): Observable<any> {
     this.loading.set(true);
     return this.api.login(data).pipe(
-      tap((res) => {
-        this.setToken(res.data.token);
-        this.currentUser.set(res.data.user);
-        this.loading.set(false);
-      }),
-      catchError((err) => {
-        this.loading.set(false);
-        throw err;
-      })
-    );
-  }
-
-  register(data: RegisterDTO): Observable<any> {
-    this.loading.set(true);
-    return this.api.register(data).pipe(
       tap((res) => {
         this.setToken(res.data.token);
         this.currentUser.set(res.data.user);
