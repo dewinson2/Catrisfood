@@ -17,7 +17,6 @@ export class LoginComponent {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
 
-  readonly activeTab = signal<'login' | 'register'>('login');
   readonly message = signal<{ text: string; type: 'success' | 'error' } | null>(null);
   readonly loading = signal(false);
 
@@ -25,18 +24,6 @@ export class LoginComponent {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]]
   });
-
-  registerForm: FormGroup = this.fb.group({
-    username: ['', [Validators.required, Validators.minLength(3)]],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]],
-    confirmPassword: ['', [Validators.required]]
-  });
-
-  setTab(tab: 'login' | 'register'): void {
-    this.activeTab.set(tab);
-    this.message.set(null);
-  }
 
   onLogin(): void {
     if (this.loginForm.invalid) {
@@ -54,34 +41,6 @@ export class LoginComponent {
       error: (err: any) => {
         this.loading.set(false);
         const msg = err.error?.message || 'Credenciales inválidas';
-        this.showMessage(msg, 'error');
-      }
-    });
-  }
-
-  onRegister(): void {
-    if (this.registerForm.invalid) {
-      this.registerForm.markAllAsTouched();
-      return;
-    }
-
-    const { username, email, password, confirmPassword } = this.registerForm.value;
-
-    if (password !== confirmPassword) {
-      this.showMessage('Las contraseñas no coinciden', 'error');
-      return;
-    }
-
-    this.loading.set(true);
-    this.authService.register({ username, email, password }).subscribe({
-      next: () => {
-        this.loading.set(false);
-        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/admin';
-        this.router.navigateByUrl(returnUrl);
-      },
-      error: (err: any) => {
-        this.loading.set(false);
-        const msg = err.error?.message || 'Error al registrarse';
         this.showMessage(msg, 'error');
       }
     });
