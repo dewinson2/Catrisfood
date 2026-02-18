@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { APIService, MenuItemAPI, CategoryAPI, CreateMenuDTO, UpdateMenuDTO } from '../../../api.service';
+import { AuthService } from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-form',
@@ -13,6 +14,7 @@ import { APIService, MenuItemAPI, CategoryAPI, CreateMenuDTO, UpdateMenuDTO } fr
 export class FormComponent implements OnInit {
   private fb = inject(FormBuilder);
   private api = inject(APIService);
+  private authService = inject(AuthService);
 
   // Signals
   readonly menuItems = signal<MenuItemAPI[]>([]);
@@ -271,5 +273,9 @@ export class FormComponent implements OnInit {
     if (control.errors['minlength']) return `Mínimo ${control.errors['minlength'].requiredLength} caracteres`;
     if (control.errors['min']) return `El valor mínimo es ${control.errors['min'].min}`;
     return null;
+  }
+
+  onLogout(): void {
+    this.authService.logout();
   }
 }

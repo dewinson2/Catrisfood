@@ -72,6 +72,36 @@ export interface UpdateMenuDTO {
   img_url?: string;
 }
 
+// ── Auth Interfaces ──
+
+export interface AuthUser {
+  id: number;
+  username: string;
+  email: string;
+  role: string;
+}
+
+export interface LoginDTO {
+  email: string;
+  password: string;
+}
+
+export interface RegisterDTO {
+  username: string;
+  email: string;
+  password: string;
+  role?: string;
+}
+
+export interface AuthResponse {
+  success: boolean;
+  data: {
+    token: string;
+    user: AuthUser;
+  };
+  message?: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -132,5 +162,19 @@ export class APIService {
 
   getStats(): Observable<APIResponse<StatsAPI>> {
     return this.http.get<APIResponse<StatsAPI>>(`${this.apiUrl}/stats`);
+  }
+
+  // ── Auth ──
+
+  login(data: LoginDTO): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${this.apiUrl}/auth/login`, data);
+  }
+
+  register(data: RegisterDTO): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${this.apiUrl}/auth/register`, data);
+  }
+
+  getMe(): Observable<APIResponse<AuthUser>> {
+    return this.http.get<APIResponse<AuthUser>>(`${this.apiUrl}/auth/me`);
   }
 }

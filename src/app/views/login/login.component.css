@@ -1,0 +1,18 @@
+@keyframes slide-in {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out;
+}
+
+input:focus {
+  box-shadow: 0 0 0 3px rgba(233, 78, 27, 0.1);
+}
