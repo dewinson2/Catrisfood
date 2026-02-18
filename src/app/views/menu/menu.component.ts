@@ -45,6 +45,7 @@ export class MenuComponent implements OnInit {
     return this.menuItems().filter(item => item.category === category);
   }
 
+  
   getRatingStars(rating: number): string {
     const rounded = Math.round(rating);
     if (!this.ratingStarsCache.has(rounded)) {
