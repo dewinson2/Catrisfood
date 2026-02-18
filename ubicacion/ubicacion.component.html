@@ -21,15 +21,19 @@
       <div class="max-w-3xl mx-auto">
         <div class="bg-white rounded-xl overflow-hidden shadow-md border border-[#E94E1B]/20">
           <div class="relative pb-[56.25%] h-0 overflow-hidden w-full">
-            <iframe 
-              src="https://www.google.com/maps/d/u/0/embed?mid=1Ws2zOViVt9cSTOwJubsBAXyll_lgXys&ehbc=2E312F&noprof=1" 
-              class="absolute top-0 left-0 w-full h-full"
-              style="border:0;" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade">
-              async
-            </iframe>
+            @defer () {
+              <iframe 
+                [src]="mapUrl | safeResourceUrl"
+                class="absolute top-0 left-0 w-full h-full"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Ubicación de CatrisFood">
+              </iframe>
+            } @loading {
+              <div class="absolute top-0 left-0 w-full h-full bg-gray-100 flex items-center justify-center">
+                <p class="text-gray-600">Cargando mapa...</p>
+              </div>
+            }
           </div>
         </div>
       </div>
