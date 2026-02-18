@@ -1,0 +1,354 @@
+<section class="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 py-8 px-4">
+  <div class="container mx-auto max-w-7xl">
+
+    <!-- Header -->
+    <div class="text-center mb-10">
+      <h1 class="text-4xl font-bold text-white font-satisfy mb-2">Panel de Administración</h1>
+      <div class="flex justify-center mt-3">
+        <div class="h-1 w-16 bg-[#E94E1B] rounded-full mx-1"></div>
+        <div class="h-1 w-16 bg-[#D81B60] rounded-full mx-1"></div>
+        <div class="h-1 w-16 bg-[#4CAF50] rounded-full mx-1"></div>
+      </div>
+      <p class="text-white/60 mt-4">Gestiona el menú y las categorías de CatrisFood</p>
+    </div>
+
+    <!-- Message Toast -->
+    @if (message(); as msg) {
+      <div class="fixed top-6 right-6 z-50 animate-slide-in">
+        <div [class]="msg.type === 'success'
+          ? 'bg-green-500/90 border-green-400'
+          : 'bg-red-500/90 border-red-400'"
+          class="backdrop-blur-sm text-white px-6 py-4 rounded-xl shadow-2xl border flex items-center gap-3 max-w-md">
+          <span class="text-xl">{{ msg.type === 'success' ? '✅' : '❌' }}</span>
+          <span class="font-medium">{{ msg.text }}</span>
+        </div>
+      </div>
+    }
+
+    <!-- Tabs -->
+    <div class="flex justify-center mb-8">
+      <div class="bg-black/50 backdrop-blur-sm rounded-full p-1 border border-white/10 flex">
+        <button (click)="setTab('menu')"
+          [class]="activeTab() === 'menu'
+            ? 'bg-[#E94E1B] text-white shadow-lg'
+            : 'text-white/60 hover:text-white'"
+          class="px-8 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          </svg>
+          Menú
+        </button>
+        <button (click)="setTab('category')"
+          [class]="activeTab() === 'category'
+            ? 'bg-[#D81B60] text-white shadow-lg'
+            : 'text-white/60 hover:text-white'"
+          class="px-8 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+          </svg>
+          Categorías
+        </button>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════ TAB: MENÚ ═══════════════════════ -->
+    @if (activeTab() === 'menu') {
+      <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+
+        <!-- Formulario de Menú -->
+        <div class="xl:col-span-1" id="menu-form-section">
+          <div class="bg-black/40 backdrop-blur-sm rounded-2xl border border-white/10 p-6 sticky top-8">
+            <h2 class="text-2xl font-bold text-white font-satisfy mb-6 flex items-center gap-3">
+              <span class="w-10 h-10 bg-[#E94E1B] rounded-full flex items-center justify-center text-lg">
+                {{ isEditing() ? '✏️' : '➕' }}
+              </span>
+              {{ isEditing() ? 'Editar Producto' : 'Nuevo Producto' }}
+            </h2>
+
+            <form [formGroup]="menuForm" (ngSubmit)="submitMenu()" class="space-y-5">
+              <!-- Nombre -->
+              <div>
+                <label class="block text-white/80 text-sm font-medium mb-2">
+                  Nombre del producto <span class="text-red-400">*</span>
+                </label>
+                <input formControlName="name" type="text" placeholder="Ej: Pizza Margarita"
+                  class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E94E1B] focus:ring-1 focus:ring-[#E94E1B] transition-all">
+                @if (getFieldError(menuForm, 'name'); as error) {
+                  <span class="text-red-400 text-xs mt-1 block">{{ error }}</span>
+                }
+              </div>
+
+              <!-- Precio -->
+              <div>
+                <label class="block text-white/80 text-sm font-medium mb-2">
+                  Precio <span class="text-red-400">*</span>
+                </label>
+                <div class="relative">
+                  <span class="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 font-medium">$</span>
+                  <input formControlName="price" type="number" step="0.01" placeholder="0.00"
+                    class="w-full bg-white/5 border border-white/20 rounded-xl pl-8 pr-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E94E1B] focus:ring-1 focus:ring-[#E94E1B] transition-all">
+                </div>
+                @if (getFieldError(menuForm, 'price'); as error) {
+                  <span class="text-red-400 text-xs mt-1 block">{{ error }}</span>
+                }
+              </div>
+
+              <!-- Categoría -->
+              <div>
+                <label class="block text-white/80 text-sm font-medium mb-2">
+                  Categoría <span class="text-red-400">*</span>
+                </label>
+                <select formControlName="category"
+                  class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#E94E1B] focus:ring-1 focus:ring-[#E94E1B] transition-all appearance-none">
+                  <option value="" disabled class="bg-gray-900">Seleccionar categoría</option>
+                  @for (cat of categories(); track cat.category) {
+                    <option [value]="cat.category" class="bg-gray-900">{{ cat.category }} ({{ cat.count }})</option>
+                  }
+                </select>
+                @if (getFieldError(menuForm, 'category'); as error) {
+                  <span class="text-red-400 text-xs mt-1 block">{{ error }}</span>
+                }
+              </div>
+
+              <!-- Descripción -->
+              <div>
+                <label class="block text-white/80 text-sm font-medium mb-2">Descripción</label>
+                <textarea formControlName="description" rows="3" placeholder="Descripción del producto..."
+                  class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E94E1B] focus:ring-1 focus:ring-[#E94E1B] transition-all resize-none"></textarea>
+              </div>
+
+              <!-- Imagen -->
+              <div>
+                <label class="block text-white/80 text-sm font-medium mb-2">Imagen</label>
+                <div class="border-2 border-dashed border-white/20 rounded-xl p-4 text-center hover:border-[#E94E1B]/50 transition-colors">
+                  @if (imagePreview(); as preview) {
+                    <div class="relative mb-3">
+                      <img [src]="preview" alt="Preview" class="w-full h-40 object-cover rounded-lg">
+                      <button type="button" (click)="imagePreview.set(null); menuForm.patchValue({img_url: ''})"
+                        class="absolute top-2 right-2 bg-red-500 text-white w-7 h-7 rounded-full flex items-center justify-center text-sm hover:bg-red-600 transition-colors">
+                        ✕
+                      </button>
+                    </div>
+                  }
+                  <label class="cursor-pointer">
+                    <div class="flex flex-col items-center gap-2">
+                      @if (uploadingImage()) {
+                        <div class="animate-spin w-8 h-8 border-3 border-[#E94E1B] border-t-transparent rounded-full"></div>
+                        <span class="text-white/50 text-sm">Subiendo...</span>
+                      } @else {
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white/30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span class="text-white/50 text-sm">Click para subir imagen (máx 5MB)</span>
+                      }
+                    </div>
+                    <input type="file" accept="image/*" class="hidden" (change)="onImageSelected($event)" [disabled]="uploadingImage()">
+                  </label>
+                </div>
+              </div>
+
+              <!-- Botones -->
+              <div class="flex gap-3 pt-2">
+                <button type="submit" [disabled]="loading() || uploadingImage()"
+                  class="flex-1 bg-[#E94E1B] hover:bg-[#D81B60] disabled:opacity-50 disabled:cursor-not-allowed text-white py-3 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+                  @if (loading()) {
+                    <div class="animate-spin w-5 h-5 border-2 border-white border-t-transparent rounded-full"></div>
+                  }
+                  {{ isEditing() ? 'Actualizar Producto' : 'Crear Producto' }}
+                </button>
+                @if (isEditing()) {
+                  <button type="button" (click)="resetMenuForm()"
+                    class="px-6 bg-white/10 hover:bg-white/20 text-white py-3 rounded-xl font-medium transition-all duration-300">
+                    Cancelar
+                  </button>
+                }
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Lista de Productos -->
+        <div class="xl:col-span-2">
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-2xl font-bold text-white font-satisfy">Productos del Menú</h2>
+            <span class="bg-white/10 text-white/60 px-4 py-1.5 rounded-full text-sm">
+              {{ menuItems().length }} productos
+            </span>
+          </div>
+
+          @if (loading() && menuItems().length === 0) {
+            <div class="flex justify-center py-20">
+              <div class="animate-spin w-12 h-12 border-4 border-[#E94E1B] border-t-transparent rounded-full"></div>
+            </div>
+          } @else if (menuItems().length === 0) {
+            <div class="bg-black/40 backdrop-blur-sm rounded-2xl border border-white/10 p-12 text-center">
+              <div class="text-6xl mb-4">🍽️</div>
+              <p class="text-white/60 text-lg">No hay productos en el menú</p>
+              <p class="text-white/40 text-sm mt-2">Crea el primer producto usando el formulario</p>
+            </div>
+          } @else {
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              @for (item of menuItems(); track item.id_menu) {
+                <div class="bg-black/40 backdrop-blur-sm rounded-xl border border-white/10 overflow-hidden hover:border-white/20 transition-all group">
+                  <div class="flex">
+                    <!-- Imagen -->
+                    <div class="w-32 h-32 flex-shrink-0 overflow-hidden">
+                      @if (item.img_url) {
+                        <img [src]="item.img_url" [alt]="item.name" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                      } @else {
+                        <div class="w-full h-full bg-white/5 flex items-center justify-center">
+                          <span class="text-3xl">🍽️</span>
+                        </div>
+                      }
+                    </div>
+
+                    <!-- Info -->
+                    <div class="flex-1 p-4 flex flex-col justify-between min-w-0">
+                      <div>
+                        <div class="flex items-start justify-between gap-2">
+                          <h3 class="text-white font-bold text-sm truncate">{{ item.name }}</h3>
+                          <span class="text-[#E94E1B] font-bold text-sm whitespace-nowrap">${{ item.price }}</span>
+                        </div>
+                        <span class="inline-block bg-[#D81B60]/20 text-[#D81B60] text-xs px-2 py-0.5 rounded-full mt-1">
+                          {{ item.category }}
+                        </span>
+                        @if (item.description) {
+                          <p class="text-white/50 text-xs mt-1 line-clamp-2">{{ item.description }}</p>
+                        }
+                      </div>
+
+                      <!-- Rating & Actions -->
+                      <div class="flex items-center justify-between mt-2">
+                        <div class="flex items-center gap-1">
+                          <span class="text-yellow-500 text-xs">⭐</span>
+                          <span class="text-white/50 text-xs">{{ item.reviews_average || '0' }} ({{ item.reviews_numbers || 0 }})</span>
+                        </div>
+                        <div class="flex gap-1">
+                          <button (click)="editItem(item)" title="Editar"
+                            class="w-8 h-8 bg-blue-500/20 hover:bg-blue-500/40 text-blue-400 rounded-lg flex items-center justify-center text-sm transition-colors">
+                            ✏️
+                          </button>
+                          <button (click)="confirmDelete(item.id_menu)" title="Eliminar"
+                            class="w-8 h-8 bg-red-500/20 hover:bg-red-500/40 text-red-400 rounded-lg flex items-center justify-center text-sm transition-colors">
+                            🗑️
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Delete Confirmation -->
+                  @if (showDeleteConfirm() === item.id_menu) {
+                    <div class="bg-red-500/10 border-t border-red-500/30 p-3 flex items-center justify-between">
+                      <span class="text-red-300 text-sm">¿Eliminar "{{ item.name }}"?</span>
+                      <div class="flex gap-2">
+                        <button (click)="deleteItem(item.id_menu)"
+                          class="bg-red-500 hover:bg-red-600 text-white px-4 py-1.5 rounded-lg text-sm font-medium transition-colors">
+                          Sí, eliminar
+                        </button>
+                        <button (click)="cancelDelete()"
+                          class="bg-white/10 hover:bg-white/20 text-white px-4 py-1.5 rounded-lg text-sm transition-colors">
+                          Cancelar
+                        </button>
+                      </div>
+                    </div>
+                  }
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- ═══════════════════════ TAB: CATEGORÍAS ═══════════════════════ -->
+    @if (activeTab() === 'category') {
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+
+        <!-- Formulario de Categoría -->
+        <div>
+          <div class="bg-black/40 backdrop-blur-sm rounded-2xl border border-white/10 p-6">
+            <h2 class="text-2xl font-bold text-white font-satisfy mb-6 flex items-center gap-3">
+              <span class="w-10 h-10 bg-[#D81B60] rounded-full flex items-center justify-center text-lg">🏷️</span>
+              Nueva Categoría
+            </h2>
+
+            <form [formGroup]="categoryForm" (ngSubmit)="submitCategory()" class="space-y-5">
+              <div>
+                <label class="block text-white/80 text-sm font-medium mb-2">
+                  Nombre de la categoría <span class="text-red-400">*</span>
+                </label>
+                <input formControlName="name" type="text" placeholder="Ej: Postres, Bebidas..."
+                  class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#D81B60] focus:ring-1 focus:ring-[#D81B60] transition-all">
+                @if (getFieldError(categoryForm, 'name'); as error) {
+                  <span class="text-red-400 text-xs mt-1 block">{{ error }}</span>
+                }
+              </div>
+
+              <p class="text-white/40 text-xs leading-relaxed">
+                💡 Las categorías se crean automáticamente al agregar un nuevo producto con una categoría que no exista.
+                También puedes crear una aquí y luego asignar productos a ella.
+              </p>
+
+              <button type="submit" [disabled]="loading()"
+                class="w-full bg-[#D81B60] hover:bg-[#E94E1B] disabled:opacity-50 text-white py-3 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl">
+                Crear Categoría
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Lista de Categorías -->
+        <div>
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-2xl font-bold text-white font-satisfy">Categorías Existentes</h2>
+            <span class="bg-white/10 text-white/60 px-4 py-1.5 rounded-full text-sm">
+              {{ categories().length }} categorías
+            </span>
+          </div>
+
+          @if (categories().length === 0) {
+            <div class="bg-black/40 backdrop-blur-sm rounded-2xl border border-white/10 p-12 text-center">
+              <div class="text-6xl mb-4">🏷️</div>
+              <p class="text-white/60 text-lg">No hay categorías</p>
+              <p class="text-white/40 text-sm mt-2">Las categorías se crean al agregar productos</p>
+            </div>
+          } @else {
+            <div class="space-y-3">
+              @for (cat of categories(); track cat.category) {
+                <div class="bg-black/40 backdrop-blur-sm rounded-xl border border-white/10 p-4 flex items-center justify-between hover:border-white/20 transition-all">
+                  <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-[#D81B60]/20 rounded-xl flex items-center justify-center">
+                      <span class="text-xl">🏷️</span>
+                    </div>
+                    <div>
+                      <h3 class="text-white font-bold">{{ cat.category }}</h3>
+                      <span class="text-white/50 text-sm">{{ cat.count }} producto(s)</span>
+                    </div>
+                  </div>
+                  <div class="flex gap-2">
+                    <button (click)="deleteCategory(cat.category)" title="Eliminar categoría"
+                      class="w-9 h-9 bg-red-500/20 hover:bg-red-500/40 text-red-400 rounded-lg flex items-center justify-center transition-colors">
+                      🗑️
+                    </button>
+                  </div>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- Volver al inicio -->
+    <div class="text-center mt-12">
+      <a routerLink="/"
+        class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-8 py-3 rounded-full font-medium transition-all duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+        </svg>
+        Volver al Inicio
+      </a>
+    </div>
+  </div>
+</section>
