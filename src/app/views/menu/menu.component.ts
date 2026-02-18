@@ -2,28 +2,11 @@ import { Component, signal, computed, ChangeDetectionStrategy, inject, OnInit } 
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { NavegacionMenuComponent } from '../../components/navegacion-menu/navegacion-menu.component';
-import { APIService } from '../../api.service';
-
-interface MenuCategory {
-  id: string;
-  name: string;
-}
-
-interface MenuItem {
-  id: number;
-  category_id: string;
-  title: string;
-  description: string;
-  price: number;
-  image: string;
-  rating: number;
-  reviews: number;
-}
+import { APIService, MenuItemAPI, CategoryAPI } from '../../api.service';
 
 @Component({
   selector: 'app-menu',
-  standalone: true,
-  imports: [CommonModule, RouterLink, NavegacionMenuComponent, NgOptimizedImage],
+  imports: [RouterLink, NavegacionMenuComponent, CommonModule],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -32,40 +15,45 @@ export class MenuComponent implements OnInit {
   private apiService = inject(APIService);
   private ratingStarsCache = new Map<number, string>();
 
-  readonly categories= signal<MenuCategory[]>([]);
-
-  // Aquí usamos signal para guardar los items
-  readonly menuItems = signal<MenuItem[]>([]);
-
-  // Si quieres derivar cosas, aquí sí puedes usar un computed
+  readonly categories = signal<CategoryAPI[]>([]);
+  readonly menuItems = signal<MenuItemAPI[]>([]);
   readonly totalItems = computed(() => this.menuItems().length);
 
-  getItemsByCategory(categoryId: string): MenuItem[] {
-    return this.menuItems().filter(item => item.category_id === categoryId);
+  ngOnInit(): void {
+    // Cargar categorías
+    this.apiService.getCategories().subscribe({
+      next: (res) => {
+        if (res.success) {
+          this.categories.set(res.data);
+        }
+      },
+      error: (err) => console.error('Error cargando categorías:', err)
+    });
+
+    // Cargar todos los items del menú
+    this.apiService.getMenu().subscribe({
+      next: (res) => {
+        if (res.success) {
+          this.menuItems.set(res.data);
+        }
+      },
+      error: (err) => console.error('Error cargando menú:', err)
+    });
+  }
+
+  getItemsByCategory(category: string): MenuItemAPI[] {
+    return this.menuItems().filter(item => item.category === category);
   }
 
   getRatingStars(rating: number): string {
-    if (!this.ratingStarsCache.has(rating)) {
-      this.ratingStarsCache.set(rating, '★'.repeat(rating) + '☆'.repeat(5 - rating));
+    const rounded = Math.round(rating);
+    if (!this.ratingStarsCache.has(rounded)) {
+      this.ratingStarsCache.set(rounded, '★'.repeat(rounded) + '☆'.repeat(5 - rounded));
     }
-    return this.ratingStarsCache.get(rating)!;
+    return this.ratingStarsCache.get(rounded)!;
   }
 
-  handleAddToCart(item: MenuItem): void {
+  handleAddToCart(item: MenuItemAPI): void {
     console.log('Añadiendo al carrito:', item);
   }
-
-  ngOnInit() {
-  this.apiService.getMenuItems().subscribe({
-    next: (items) => this.menuItems.set(items),
-    error: (err) => console.error('Error cargando menú:', err)
-  });
-
-  this.apiService.getMenuCategories().subscribe({
-    next: (categories) => this.categories.set(categories),
-    error: (err) => console.error('Error cargando categorías:', err)
-  });
-  console.log(this.categories());
-}
-
 }

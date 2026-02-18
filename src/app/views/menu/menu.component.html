@@ -30,30 +30,30 @@
 
     <app-navegacion-menu></app-navegacion-menu>
 
-    @for (category of categories(); track category.id) {
-      <div [id]="category.id" class="mb-16">
+    @for (category of categories(); track category.category) {
+      <div [id]="category.category" class="mb-16">
         <div class="flex items-center mb-8">
-          <h2 class="text-3xl font-bold text-white font-satisfy mr-4">{{ category.name }}</h2>
+          <h2 class="text-3xl font-bold text-white font-satisfy mr-4">{{ category.category }}</h2>
           <div class="h-0.5 flex-grow bg-gradient-to-r from-[#E94E1B] to-transparent rounded-full"></div>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          @for (item of getItemsByCategory(category.id); track item.id) {
+          @for (item of getItemsByCategory(category.category); track item.id_menu) {
             <div class="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-white/10">
               <div class="relative h-64 overflow-hidden">
-                <img [ngSrc]="item.image" [alt]="item.title" width="600" height="400"
+                <img [src]="item.img_url" [alt]="item.name"
                      class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                 <div class="absolute top-4 right-4 bg-[#E94E1B] text-white text-sm font-bold px-3 py-1 rounded-full">
-                  RD${{ item.price }}.00
+                  RD${{ item.price }}
                 </div>
               </div>
               <div class="p-5">
-                <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">{{ item.title }}</h3>
+                <h3 class="text-xl font-bold text-[#E94E1B] mb-2 font-satisfy">{{ item.name }}</h3>
                 <p class="text-white/80 mb-4">{{ item.description }}</p>
                 <div class="flex items-center justify-between">
                   <div class="flex items-center">
-                    <span class="text-yellow-500">{{ getRatingStars(item.rating) }}</span>
-                    <span class="text-white/60 text-sm ml-1">({{ item.reviews }})</span>
+                    <span class="text-yellow-500">{{ getRatingStars(+item.reviews_average) }}</span>
+                    <span class="text-white/60 text-sm ml-1">({{ item.reviews_numbers }})</span>
                   </div>
                   <button (click)="handleAddToCart(item)" 
                           class="bg-[#E94E1B] hover:bg-[#D81B60] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow transform hover:-translate-y-1">
